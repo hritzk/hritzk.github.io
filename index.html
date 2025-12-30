@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Comparison Pro</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <style>
+        :root { --primary: #007bff; --success: #28a745; --gray: #666; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 20px; max-width: 600px; margin: auto; background: #f0f2f5; line-height: 1.5; }
+        .container { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; color: #333; font-size: 1.5rem; }
+        label { display: block; margin-bottom: 5px; font-size: 0.85rem; font-weight: 600; color: var(--gray); text-transform: uppercase; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; }
+        button { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: background 0.2s; }
+        button:hover { background: #0056b3; }
+        
+        .item-card { background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 15px; margin-top: 15px; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .store-name { font-size: 1.1rem; font-weight: 800; color: #222; }
+        .unit-price-box { text-align: right; }
+        .unit-price { display: block; color: var(--success); font-weight: bold; font-size: 1.3rem; }
+        
+        .details-text { font-size: 0.95rem; color: #444; margin-bottom: 10px; }
+        .meta-info { font-size: 0.85rem; color: var(--gray); }
+
+        details { margin-top: 12px; border-top: 1px solid #eee; padding-top: 10px; }
+        summary { font-size: 0.85rem; font-weight: bold; color: var(--primary); cursor: pointer; padding: 5px 0; }
+        .other-price-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Price Comparison</h2>
+    
+    <label for="userInput">Search Item</label>
+    <input type="text" id="userInput" placeholder="Search (e.g. Eggs, Gala Apple)" onkeydown="if(event.key === 'Enter') searchData()">
+
+    <label for="storeFilter">Store Location</label>
+    <select id="storeFilter"><option value="all">All Stores</option></select>
+
+    <button onclick="searchData()">Find Best Prices</button>
+    <div id="results"></div>
+</div>
+
+<script>
+    let csvData = [];
+
+    window.onload = function() {
+        Papa.parse("receipt_data.csv", {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                csvData = results.data;
+                populateStoreDropdown(csvData);
+            }
+        });
+    };
+
+    function populateStoreDropdown(data) {
+        const select = document.getElementById('storeFilter');
+        const stores = [...new Set(data.map(row => row.Store).filter(s => s))];
+        stores.sort().forEach(store => {
+            const option = document.createElement('option');
+            option.value = store;
+            option.textContent = store;
+            select.appendChild(option);
+        });
+    }
+
+    function searchData() {
+        const input = document.getElementById('userInput').value.toLowerCase().trim();
+        const selectedStore = document.getElementById('storeFilter').value;
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = ""; 
+
+        // If both are empty/default, do nothing
+        if (input === "" && selectedStore === "all") return;
+
+        let filtered = csvData.filter(row => {
+            if (!row.Item || !row['Unit Price']) return false;
+            
+            const itemValue = row.Item.toLowerCase();
+            const singularInput = input.replace(/s$/, ''); 
+            
+            // Logic Fix: If input is empty, text match is automatically true
+            const matchesText = input === "" || 
+                               itemValue.includes(input) || 
+                               itemValue.includes(singularInput) ||
+                               (singularInput.length > 2 && itemValue.includes(singularInput));
+
+            const matchesStore = selectedStore === "all" || row.Store === selectedStore;
+            
+            return matchesText && matchesStore;
+        });
+
+        // 1. Group by Item AND Store to handle identical items at same store differently
+        // But for your requirement, we group by Store then by Item Name
+        const storeGroups = {};
+        filtered.forEach(row => {
+            if (!storeGroups[row.Store]) storeGroups[row.Store] = {};
+            
+            // Use item name as a sub-key to group different prices for the same item at the same store
+            if (!storeGroups[row.Store][row.Item]) storeGroups[row.Store][row.Item] = [];
+            storeGroups[row.Store][row.Item].push(row);
+        });
+
+        // 2. Flatten for display
+        let finalDisplayList = [];
+        Object.keys(storeGroups).forEach(storeName => {
+            Object.keys(storeGroups[storeName]).forEach(itemName => {
+                let items = storeGroups[storeName][itemName];
+                
+                // Sort by numeric price
+                items.sort((a, b) => {
+                    return parseFloat(a['Unit Price'].replace(/[^0-9.]/g, '')) - 
+                           parseFloat(b['Unit Price'].replace(/[^0-9.]/g, ''));
+                });
+
+                finalDisplayList.push({
+                    store: storeName,
+                    cheapest: items[0],
+                    others: items.slice(1)
+                });
+            });
+        });
+
+        // 3. Sort the whole list by the cheapest unit price
+        finalDisplayList.sort((a, b) => {
+            return parseFloat(a.cheapest['Unit Price'].replace(/[^0-9.]/g, '')) - 
+                   parseFloat(b.cheapest['Unit Price'].replace(/[^0-9.]/g, ''));
+        });
+
+        if (finalDisplayList.length > 0) {
+            finalDisplayList.forEach(group => {
+                const main = group.cheapest;
+                // Fix 1: Add $ to the front of the Unit Price
+                const displayUnitPrice = "$" + main['Unit Price'];
+                
+                let html = `
+                    <div class="item-card">
+                        <div class="card-header">
+                            <div class="store-name">${group.store}</div>
+                            <div class="unit-price-box">
+                                <span class="unit-price">${displayUnitPrice}</span>
+                            </div>
+                        </div>
+                        <div class="details-text">${main.Item}</div>
+                        <div class="meta-info">
+                            Total: $${parseFloat(main.Price).toFixed(2)} (${main['Size/Weight']})<br>
+                            Date: ${main['Date (mm-yyyy)']}
+                        </div>`;
+
+                if (group.others.length > 0) {
+                    html += `<details><summary>Other Higher Prices (${group.others.length})</summary>`;
+                    group.others.forEach(other => {
+                        html += `
+                            <div class="other-price-row">
+                                <span>$${other['Unit Price']}</span>
+                                <span style="color: #888;">${other['Date (mm-yyyy)']}</span>
+                            </div>`;
+                    });
+                    html += `</details>`;
+                }
+                html += `</div>`;
+                resultsDiv.innerHTML += html;
+            });
+        } else {
+            resultsDiv.innerHTML = "<p>No matches found.</p>";
+        }
+    }
+</script>
+</body>
+</html>

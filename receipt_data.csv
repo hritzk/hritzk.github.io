@@ -1,0 +1,206 @@
+Store,Item,Price,Size/Weight,Unit Price,Date (mm-yyyy)
+Safeway,Signature Select Elbow Macaroni Pasta,1.84,2 boxes (16 oz ea),0.92 per unit,Dec-25
+Safeway,Chef's Counter Top Sirloin Steak,5.99,1 lb (est.),5.99 per lb,Dec-25
+Safeway,Russet Potatoes,1.97,10 lb bag,0.20 per lb,Dec-25
+Safeway,Fresh Cranberries,1.97,12 oz bag,1.97 per unit,Dec-25
+Safeway,Fresh Cauliflower,2.33,2.4 lb,0.97 per lb,Dec-25
+Safeway,Fresh Celery Stalks,2.49,1 bunch,2.49 per unit,Dec-25
+Safeway,Yellow Onions,0.75,0.76 lb,0.99 per lb,Dec-25
+Safeway,Fresh Brussels Sprouts,2.86,2.95 lb,0.97 per lb,Dec-25
+Safeway,NatureSweet Cherubs Grape Tomatoes,4.5,10 oz,4.50 per unit,Dec-25
+Safeway,Schilling Cider Excelsior Imperial,13.99,6-pack,13.99 per unit,Dec-25
+Costco,Amylu Chicken Sausage,13.99,32 oz,13.99 per unit,Dec-25
+Costco,Mandarin Oranges,2.99,5 lb bag,2.99 per unit,Dec-25
+Costco,Kirkland Signature Free Range Eggs,4.59,2 dozen (24 count),4.59 per unit,Dec-25
+Costco,Grillo's Pickles,6.89,52 oz tub,6.89 per unit,Dec-25
+Apna Bazar,Ginger,1.99,1 lb,1.99 per lb,Mar-25
+Apna Bazar,Yellow Onion,1.49,1 lb,1.49 per lb,Mar-25
+Apna Bazar,Samosa - Ashoka - Punjabi,6.99,12 Samosas,6.99 per unit,Mar-25
+Apna Bazar,Moong Dal - Deep,3.49,2 lbs,1.745 per lb,Mar-25
+Carpinito,Broccoli,1,1 lb,1.00 per lb,Jul-25
+Carpinito,Broccoli,1.38,1 lb,1.38 per lb,Aug-25
+Carpinito,Broccoli,1.99,1 lb,1.99 per lb,Oct-25
+Carpinito,Avocados,2.5,1 Avocado,2.5 per Avocado,Aug-25
+Carpinito,Avocados,3,1 Avocado,3 per Avocado,Aug-25
+Carpinito,Avocados,3.5,1 Avocado,3.5 per Avocado,Jul-25
+Carpinito,Red Bell Pepper,1,1 Pepper,1 per Pepper,Oct-25
+Carpinito,Red Bell Pepper,1.5,1 Pepper,1.50 per Pepper,Jul-25
+Carpinito,Cauliflour,2,1 Head,2 per head,Aug-25
+Carpinito,Apple - Honeycrisp,1.99,1 lb,1.99 per lb,Jul-25
+Carpinito,Apple - Honeycrisp,2.5,1 lb,2.50 per lb,Jul-25
+Carpinito,Apple - Honeycrisp,2.5,1 lb,2.50 per lb,Aug-25
+Carpinito,Apple - Honeycrisp,2.5,1 lb,2.50 per lb,Aug-25
+Carpinito,Apple - Honeycrisp,2.5,1 lb,2.50 per lb,Sep-25
+Carpinito,Peaches,2.88,1 lb,2.88 per lb,Aug-25
+Carpinito,Peaches,2.99,1 lb,2.99 per lb,Aug-25
+Carpinito,Peaches,2.99,1 lb,2.99 per lb,Sep-25
+Carpinito,Peaches,3.99,1 lb,3.99 per lb,Jul-25
+Carpinito,Peaches,3.99,1 lb,3.99 per lb,Aug-25
+Carpinito,Apricots,2.99,1 lb,2.99 per lb,Jul-25
+Carpinito,Nectarines,2.99,1 lb,2.99 per lb,Aug-25
+Carpinito,Nectarines,3.28,1 lb,3.28 per lb,Aug-25
+Carpinito,Nectarines,3.99,1 lb,3.99 per lb,Jul-25
+Carpinito,Nectarines,3.99,1 lb,3.99 per lb,Aug-25
+Carpinito,Plums - Red,3.28,1 lb,3.28 per lb,Jul-25
+Carpinito,Jalapeno,1.5,1 lb,1.5 per lb,Aug-25
+Carpinito,Sweet Onions,1.38,1 lb,1.38 per lb,Aug-25
+Carpinito,Sweet Onions,1.48,1 lb,1.48 per lb,Aug-25
+Carpinito,Red Onion,1.48,1 lb,1.48 per lb,Aug-25
+Carpinito,Green Beans,2.28,1 lb,2.28 per lb,Aug-25
+Carpinito,Green Beans,2.28,1 lb,2.28 per lb,Aug-25
+Carpinito,Beets,0.99,1 lb,0.99 per lb,Aug-25
+Carpinito,Beets,1.25,1 lb,1.25 per lb,Oct-25
+Carpinito,Tomatoes - Beefsteak,1.99,1 lb,1.99 per lb,Aug-25
+Carpinito,Tomatoes - Beefsteak,2.28,1 lb,2.28 per lb,Aug-25
+Carpinito,Lettuce - Red Leaf,1.4,1 Head,1.4 per Head,Aug-25
+Carpinito,Spinach,1,1 bundle,1 per bundle,Aug-25
+Carpinito,Spinach,1.4,1 bundle,1.40 per bundle,Aug-25
+Carpinito,Tomatoes - Roma,1.99,1 lb,1.99 per lb,Aug-25
+Carpinito,Radishes,0.78,1 bundle,0.78 per bundle,Aug-25
+Carpinito,Kale,1.4,1 bundle,1.4 per bundle,Aug-25
+Carpinito,Green Bell Pepper,0.75,1 Pepper,0.75 per Pepper,Aug-25
+Carpinito,Green Bell Pepper,0.75,1 Pepper,0.75 per Pepper,Sep-25
+Carpinito,Green Bell Pepper,0.75,1 Pepper,0.75 per Pepper,Oct-25
+Carpinito,Beets,1.25,1 lb,1.25 per lb,Aug-25
+Carpinito,Yellow Onion,0.79,1 lb,0.79 per lb,Aug-25
+Carpinito,Yellow Onion,0.79,1 lb,0.79 per lb,Oct-25
+Carpinito,Yellow Onion,1.39,1 lb,1.39 per lb,Sep-25
+Carpinito,Green Onions,0.99,1 bundle,0.99 per bundle,Aug-25
+Carpinito,Zucchini,1.28,1 lb,1.28 per lb,Aug-25
+Carpinito,Cilantro,0.75,1 bundle,0.75 per bundle,Aug-25
+Carpinito,Cilantro,0.75,1 bundle,0.75 per bundle,Oct-25
+Carpinito,Sweet Potatoes / Yams,1.99,1 lb,1.99 per lb,Aug-25
+Carpinito,Cantaloupe,0.88,1 lb,0.88 per lb,Aug-25
+Carpinito,Butternut Squash,4,1 Squash,4 per Squash,Sep-25
+Carpinito,Butternut Squash,4,1 Squash,4 per Squash,Oct-25
+Carpinito,Plums - Black,0.79,1 lb,0.79 per lb,Sep-25
+Carpinito,Pear - Bosc,0.99,1 lb,0.99 per lb,Oct-25
+Carpinito,Lime,0.5,1 lime,0.5 per Lime,Oct-25
+Carpinito,Brussels Sprouts,3,1 Stalk,3 per stalk,Oct-25
+Carpinito,Cabbage - Jumbo,3,1 Head,3 per head,Oct-25
+Costco,Honey,15.99,80 oz (5 lbs),3.19 per oz,Jul-25
+Costco,Vanilla,11.99,16 oz,0.75 per oz,Jul-25
+Costco,Frozen Fruit,11.79,4 lbs,2.95 per lb,Jul-25
+Costco,Olive Oil,16.99,67.628 oz (2 liter),0.25 per oz,Jul-25
+Costco,Olive Oil,17.99,67.628 oz (2 liter),0.27 per oz,Oct-25
+Costco,Olive Oil,24.99,67.628 oz (2 liter),0.37 per oz,Jan-25
+Costco,Olive Oil,17.49,67.628 oz (2 liter),0.26 per oz,Nov-25
+Costco,Laundry Detergent - Kirkland,13.99,146 Loads (194 oz),0.10 per load,Jul-25
+Costco,Laundry Detergent - Kirkland,14.69,146 Loads (194 oz),0.10 per load,Jul-25
+Costco,Frozen Chicken Breast - Foster Farms,18.99,10 lbs,18.99 per unit,Aug-25
+Costco,Rotisserie Chicken,4.99,1 chicken,4.99 per chicken,Aug-25
+Costco,Rotisserie Chicken,4.99,1 chicken,4.99 per chicken,Dec-24
+Costco,Rotisserie Chicken,4.99,1 chicken,4.99 per chicken,Dec-25
+Costco,Pizza - Slice,1.99,1 Slice,1.99 per slice,Sep-25
+Costco,Toilet Paper,19.49,30 rolls,19.49 per unit,Oct-25
+Costco,Toilet Paper,19.99,30 rolls,19.99 per unit,Nov-24
+Costco,Toilet Paper,20.99,30 rolls,20.99 per unit,Oct-25
+Costco,Paper Towel,19.49,12 rolls,19.49 per unit,Oct-25
+Costco,Laundry Detergent - Kirkland Pods,19.99,152 Pods,19.99 per unit,Oct-25
+Costco,Orgain Chocolate Protein Powder,24.99,2.74 lbs,24.99 per unit,Oct-25
+Costco,Schilling Cider,11.99,6 pack,11.99 per unit,Oct-25
+Costco,Dishwasher Detergent Pods,11.99,115 ct,11.99 per unit,Oct-25
+Costco,Ibuprofen - Kirkland liquid gels,13.49,360 ct,13.49 per unit,Oct-25
+Costco,Pepperoni Pizza - Fresh,9.95,1 Pizza,9.95 per pizza,Jan-25
+Costco,Pepperoni Pizza - Fresh,9.95,1 Pizza,9.95 per pizza,Dec-24
+Costco,Pepperoni Pizza - Fresh,9.95,1 Pizza,9.95 per pizza,Aug-25
+Costco,Tortellini,10.99,3 lbs,10.99 per unit,Jan-25
+Costco,Tortellini,10.99,3 lbs,10.99 per unit,Aug-24
+Costco,Tortellini,12.99,3 lbs,12.99 per unit,Dec-25
+Costco,Pesto,9.49,22 oz,9.49 per unit,Jan-25
+Costco,Pesto,9.49,22 oz,9.49 per unit,Mar-24
+Costco,Pesto,9.49,22 oz,9.49 per unit,Aug-24
+Costco,Pesto,9.49,22 oz,9.49 per unit,Jan-25
+Costco,Pesto,9.99,22 oz,9.99 per unit,Oct-25
+Costco,Pesto,9.99,22 oz,9.99 per unit,Dec-25
+Costco,Salsa - Mateos,6.59,32 oz,6.59 per unit,Jan-25
+Costco,Salsa - Mateos,6.79,32 oz,6.79 per unit,Nov-24
+Costco,Pot Stickers / Dumplings - Ling Ling,8.79,4.2 lbs,8.79 per unit,Aug-25
+Costco,Pot Stickers / Dumplings - Ling Ling,12.79,4.2 lbs,12.79 per unit,Jan-24
+Costco,That's It Mini Fruit Bars,14.49,16.8 oz,14.49 per unit,Jan-25
+Costco,Pure Organic Fruit Bars,9.99,17.7 oz,9.99 per unit,Jan-25
+Costco,Pure Organic Fruit Bars,13.99,17.7 oz,13.99 per unit,Jan-24
+Costco,Pure Organic Fruit Bars,13.99,17.7 oz,13.99 per unit,Apr-25
+Costco,Granulated Garlic,7.99,18 oz,7.99 per unit,Feb-25
+Costco,Granulated Garlic,8.29,18 oz,8.29 per unit,Aug-25
+Costco,Strawberry,4.99,2 lbs,4.99 per unit,Jul-25
+Costco,Strawberry,4.99,2 lbs,4.99 per unit,Aug-25
+Costco,Strawberry,6.99,2 lbs,6.99 per unit,Feb-24
+Costco,Strawberry,6.99,2 lbs,6.99 per unit,Jan-25
+Costco,Strawberry,5.49,2 lbs,5.49 per unit,Apr-25
+Costco,Strawberry,5.99,2 lbs,5.99 per unit,Mar-25
+Costco,Strawberry,5.99,2 lbs,5.99 per unit,Jul-25
+Costco,Strawberry,5.99,2 lbs,5.99 per unit,Sep-25
+Costco,Strawberry,6.49,2 lbs,6.49 per unit,Sep-25
+Costco,Ice Cream Cup - Costco,1.99,1 cup,1.99 per unit,Mar-25
+Costco,One A Day Women,14.99,300 tablets,14.99 per unit,Mar-25
+Costco,Pork Chops,2.99,1 lb,2.99 per lb,Mar-25
+Costco,Suja Ginger Lemonade,8.99,6 10.5oz bottles,8.99 per unit,Aug-25
+Costco,Crest Mouthwash,8.99,3 1L bottles,8.99 per unit,Aug-25
+Costco,Girl Scout Coconut Caramel Bites,8.69,20 oz,8.69 per unit,Aug-25
+Costco,Unreal Coconut Bars,7.49,15.3 oz,7.49 per unit,Aug-25
+Costco,Excedrin ,18.99,300 pills,18.99 per unit,Aug-25
+Costco,Ziploc Bags - Gallon,13.99,152 bags,13.99 per unit,Aug-25
+Costco,Ziploc Bags - Quart,12.99,216 bags,12.99 per unit,Aug-25
+Costco,Wine - Pinot Grigio,4.99,1 bottle,4.99 per bottle,Aug-25
+Costco,Kleenex,16.49,10 boxes,16.49 per unit,Aug-25
+Costco,Salsa - Pace,6.99,2 38oz Containers,6.99 per unit,Nov-25
+Costco,Soap - Palmolive,6.49,102 oz,6.49 per unit,Nov-25
+Costco,BBQ Sauce - Sweet Baby Rays,6.79,80 oz,6.79 per unit,Dec-25
+Costco,Chicken Broth,8.99,6 4-cup Cartons,1.50 per 4 cups,Dec-25
+Costco,Kimchi,8.79,52.9 oz,8.79 per unit,Dec-25
+Costco,Frozen Chicken Breast - Costco,18.53,6.5 lbs,2.85 per unit,Oct-25
+Costco,Frozen Chicken Breast - Thin Sliced - Costco,28.99,10 lbs,2.89 per unit,Jan-25
+Costco,Mozzarella Sticks - Petite Cuisine,11.99,5 lbs,11.99 per unit,Dec-25
+Costco,Three Berry Blend,10.89,4 lbs,2.7225 per unit,Jan-25
+Costco,Avocado Oil,21.39,2 liter,21.39 per unit,Jan-25
+Costco,Cottage Cheese - Darigold,5.99,3 lbs,5.99 per unit,Jan-25
+Costco,Salmon,,,,Jan-25
+Costco,Quinoa,9.99,4.5 lbs,9.99 per unit,Jan-25
+Costco,Greek Yogurt - Kirkland,6.29,48 oz,6.29 per unit,Jan-25
+Costco,Cheese - Laughing Cow,6.49,21.7 oz,6.49 per unit,Jan-25
+Costco,Metamucil,31.99,53.2 oz,31.99 per unit,Feb-25
+Costco,Fairlife Chocolat Milk,33.99,,33.99 per unit,Jan-25
+Costco,Kirkland Signature Free Range Eggs,4.59,2 dozen (24 count),4.59 per unit,Oct-25
+Costco,Olives,12.99,,,Feb-25
+Costco,Raspberries,3.79,12 oz,3.79 per unit,Sep-25
+Costco,Raspberries - Organic,10.99,12 oz,10.99 per unit,Feb-25
+Costco,Bread - Dave's Killer,6.59,2 loaves,3.295 per unit,Sep-25
+Costco,Frozen Chicken Thighs - Costco,17.99,6.5 Lbs,2.77 per unit,Mar-25
+Costco,Butter,13.49,4 lbs,3.37 per lb,Jun-25
+Costco,Sausage - Kirkland Chicken Parmesan Black Pepper,12.99,18 Sausages (3 lbs),12.99 per unit,Jul-25
+Costco,Hotdog Rolls - Seattle International - Sandwich Rolls,3.29,12 Rolls,3.29 per unit,Jul-25
+Costco,Ketchup - Portland,7.99,3 Bottles,2.66 per unit,Aug-25
+Costco,Tomatoes - Grape,7.49,2 lbs,7.49 per unit,Aug-25
+Costco,Honey,15.99,4.5 lbs (3 1.5lb bottles),15.99 per unit,Aug-25
+Costco,Black Pepper,5.99,12.3 oz,5.99 per unit,Aug-25
+Costco,Sandwich Meat - Cold Cuts,14.99,3.5 lbs,4.28 per unit,Sep-25
+Costco,Sandwich Cheese,9.59,2 lbs,4.80 per lb,Sep-25
+Costco,Feta Cheese - President,4.89,24 oz,4.89 per unit,Sep-25
+Costco,Cumin,6.29,14 oz,6.29 per unit,Sep-25
+Costco,Sparkling Ice,11.99,24 Bottles,0.50 per bottle,Sep-25
+Costco,Pickles - Grillo,6.89,52 oz,6.89 per unit,Sep-25
+Costco,Doritos Chips,6.99,30 oz,6.99 per unit,Sep-25
+Costco,Spinach,4.99,16 oz,4.99 per unit,Oct-25
+Costco,Blueberries,4.99,18 oz,4.99 per unit,Dec-25
+Costco,Beecher's Cheese,10.99,1 lb,10.99 per lb,Oct-25
+Costco,Butternut Squash,6.99,2 lbs,6.99 per unit,Dec-25
+Costco,Clementines - Cuties,2.99,3 lbs,2.99 per unit,Dec-25
+Costco,Asparagus,9.99,2.25 lbs,4.44 per lb,Dec-25
+Costco,Turkey - Butterball,0.99,1 lb,0.99 per lb,Dec-25
+Costco,Amylu Chicken Breakfast Sausage,13.99,2.5 lbs,13.99 per unit,Dec-25
+Costco,One A Day Women's Multivitamin,14.99,300 Count,0.05 per unit,Dec-25
+Costco,Nature's Bounty Magnesium Glycinate,12.99,200 Count,0.06 per unit,Dec-25
+Costco,Kirkland Signature Daily Multivitamin,15.99,500 Count,0.03 per unit,Dec-25
+Costco,Kirkland Signature Daily Multivitamin,15.99,500 Count,0.03 per unit,Dec-25
+Costco,Nature's Bounty Magnesium Glycinate,12.99,200 Count,0.06 per unit,Dec-25
+Fred Meyer,Store Brand Beef Bone-in,3.99,1 lb, 3.99 per lb,Dec-25
+Fred Meyer,Store Brand Beef Bone-in,3.99,1 lb, 3.99 per lb,Dec-25
+Fred Meyer,Kroger Cottage Cheese,2,16 oz, 2.00 per unit,Dec-25
+Fred Meyer,Kroger Cottage Cheese,2.5,16 oz, 2.50 per unit,Dec-25
+Fred Meyer,Parsley Bunch,3.99,1 bunch, 3.99 per unit,Dec-25
+Fred Meyer,Garlic,0.99,1 bulb, 0.99 per unit,Dec-25
+Fred Meyer,93% Lean Ground Beef,14.97,3 lbs, 4.99 per lb,Dec-25
+Fred Meyer,93% Lean Ground Beef,14.97,3 lbs, 4.99 per lb,Dec-25
+Fred Meyer,Yellow Onions,1.79,1 lb, 1.79 per lb,Dec-25
+Fred Meyer,Fred Meyer Milk,2.59,1/2 gallon, 2.59 per 1/2 gallon,Dec-25
