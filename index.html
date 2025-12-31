@@ -132,109 +132,140 @@
     }
 
     function searchData(mode) {
-        currentSortMode = mode || 'lowest';
-        updateButtonStyles(currentSortMode);
+    currentSortMode = mode || 'lowest';
+    updateButtonStyles(currentSortMode);
 
-        const input = document.getElementById('userInput').value.toLowerCase().trim();
-        const selectedStore = document.getElementById('storeFilter').value;
-        const sizeSelect = document.getElementById('sizeFilter');
-        const previousSizeSelection = sizeSelect.value || "all";
+    const input = document.getElementById('userInput').value.toLowerCase().trim();
+    const selectedStore = document.getElementById('storeFilter').value;
+    const sizeSelect = document.getElementById('sizeFilter');
+    
+    // Defensive check: ensure the element exists before grabbing value
+    const previousSizeSelection = sizeSelect ? sizeSelect.value : "all";
 
-        if (input === "" && selectedStore === "all") return;
+    if (input === "" && selectedStore === "all") return;
 
-        currentFilteredResults = csvData.filter(row => {
-            if (!row.Item || !row['Unit Price']) return false;
-            const itemValue = row.Item.toLowerCase();
-            const singularInput = input.replace(/s$/, ''); 
-            const matchesText = input === "" || itemValue.includes(input) || itemValue.includes(singularInput);
-            const matchesStore = (selectedStore === "all") || (row.Store === selectedStore);
-            return matchesText && matchesStore;
-        });
-
-        sizeSelect.innerHTML = '<option value="all">All Sizes</option>';
-        const sizes = [...new Set(currentFilteredResults.map(r => r['Size/Weight']).filter(s => s))].sort();
+    currentFilteredResults = csvData.filter(row => {
+        // Skip rows that are missing critical data
+        if (!row || !row.Item || !row['Unit Price']) return false;
         
-        if (sizes.length > 1) {
-            sizes.forEach(s => sizeSelect.add(new Option(s, s)));
-            document.getElementById('sizeFilterContainer').style.display = "block";
-            if (sizes.includes(previousSizeSelection)) {
-                sizeSelect.value = previousSizeSelection;
-            }
-        } else {
-            document.getElementById('sizeFilterContainer').style.display = "none";
-        }
+        const itemValue = row.Item.toLowerCase();
+        const singularInput = input.replace(/s$/, ''); 
+        const matchesText = input === "" || itemValue.includes(input) || itemValue.includes(singularInput);
+        const matchesStore = (selectedStore === "all") || (row.Store === selectedStore);
+        return matchesText && matchesStore;
+    });
 
-        renderResults();
+    // Rebuild Size Filter Options
+    sizeSelect.innerHTML = '<option value="all">All Sizes</option>';
+    
+    // Defensive: filter out any null/undefined sizes before sorting
+    const sizes = [...new Set(currentFilteredResults.map(r => r['Size/Weight']))]
+                    .filter(s => s && s.trim() !== "") 
+                    .sort();
+    
+    if (sizes.length > 1) {
+        sizes.forEach(s => {
+            let opt = document.createElement('option');
+            opt.value = s;
+            opt.textContent = s;
+            sizeSelect.appendChild(opt);
+        });
+        document.getElementById('sizeFilterContainer').style.display = "block";
+        
+        // Only re-apply if the previous size is still a valid option
+        if (sizes.includes(previousSizeSelection)) {
+            sizeSelect.value = previousSizeSelection;
+        }
+    } else {
+        document.getElementById('sizeFilterContainer').style.display = "none";
+        sizeSelect.value = "all"; // Reset to default if filter disappears
+    }
+renderResults();
+}
+
+function renderResults() {
+    const sizeSelect = document.getElementById('sizeFilter');
+    const selectedSize = sizeSelect ? sizeSelect.value : "all";
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = "";
+
+    if (currentFilteredResults.length === 0) {
+        resultsDiv.innerHTML = "<p style='padding:20px; color:gray;'>No matches found.</p>";
+        return;
     }
 
-    function renderResults() {
-        const selectedSize = document.getElementById('sizeFilter').value;
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = "";
+    let displayData = currentFilteredResults;
+    if (selectedSize !== "all") {
+        displayData = displayData.filter(r => r['Size/Weight'] === selectedSize);
+    }
 
-        let displayData = currentFilteredResults;
-        if (selectedSize !== "all") {
-            displayData = displayData.filter(r => r['Size/Weight'] === selectedSize);
-        }
+    // Grouping and sorting logic remains the same...
+    const storeGroups = {};
+    displayData.forEach(row => {
+        if (!storeGroups[row.Store]) storeGroups[row.Store] = {};
+        if (!storeGroups[row.Store][row.Item]) storeGroups[row.Store][row.Item] = [];
+        storeGroups[row.Store][row.Item].push(row);
+    });
 
-        const storeGroups = {};
-        displayData.forEach(row => {
-            if (!storeGroups[row.Store]) storeGroups[row.Store] = {};
-            if (!storeGroups[row.Store][row.Item]) storeGroups[row.Store][row.Item] = [];
-            storeGroups[row.Store][row.Item].push(row);
-        });
-
-        let finalDisplayList = [];
-        Object.keys(storeGroups).forEach(store => {
-            Object.keys(storeGroups[store]).forEach(item => {
-                let items = storeGroups[store][item];
-                
-                if (currentSortMode === 'recent') {
-                    items.sort((a, b) => b['Date (yyyy-mm-dd)'].localeCompare(a['Date (yyyy-mm-dd)']));
-                } else {
-                    items.sort((a, b) => parseFloat(a['Unit Price'].replace(/[^0-9.]/g, '')) - parseFloat(b['Unit Price'].replace(/[^0-9.]/g, '')));
-                }
-
-                let others = items.slice(1).sort((a, b) => b['Date (yyyy-mm-dd)'].localeCompare(a['Date (yyyy-mm-dd)']));
-                finalDisplayList.push({ store, cheapest: items[0], others });
-            });
-        });
-
-        if (currentSortMode === 'recent') {
-            finalDisplayList.sort((a, b) => b.cheapest['Date (yyyy-mm-dd)'].localeCompare(a.cheapest['Date (yyyy-mm-dd)']));
-        } else {
-            finalDisplayList.sort((a, b) => parseFloat(a.cheapest['Unit Price'].replace(/[^0-9.]/g, '')) - parseFloat(b.cheapest['Unit Price'].replace(/[^0-9.]/g, '')));
-        }
-
-        finalDisplayList.forEach(group => {
-            const main = group.cheapest;
-            const priceClass = currentSortMode === 'recent' ? 'unit-price price-recent' : 'unit-price price-lowest';
-            
-            let html = `
-                <div class="item-card">
-                    <div class="card-header">
-                        <div class="store-name">${group.store}</div>
-                        <span class="${priceClass}">${formatPriceDisplay(main['Unit Price'], main['Price'])}</span>
-                    </div>
-                    <div class="details-text">${main.Item}</div>
-                    <div class="meta-info">
-                        <span class="bold-label">Total:</span> $${parseFloat(main.Price).toFixed(2)} (${main['Size/Weight']})<br>
-                        <span class="bold-label">Date:</span> ${main['Date (yyyy-mm-dd)']}
-                    </div>`;
-
-            if (group.others.length > 0) {
-                html += `<details><summary>Other Prices (${group.others.length})</summary>`;
-                group.others.forEach(other => {
-                    html += `<div class="other-price-row">
-                        <span>${formatPriceDisplay(other['Unit Price'], other['Price'])}</span>
-                        <span style="color: #666;">${other['Date (yyyy-mm-dd)']}</span>
-                    </div>`;
+    let finalDisplayList = [];
+    Object.keys(storeGroups).forEach(store => {
+        Object.keys(storeGroups[store]).forEach(item => {
+            let items = storeGroups[store][item];
+            if (currentSortMode === 'recent') {
+                items.sort((a, b) => (b['Date (yyyy-mm-dd)'] || "").localeCompare(a['Date (yyyy-mm-dd)'] || ""));
+            } else {
+                items.sort((a, b) => {
+                    const priceA = parseFloat((a['Unit Price'] || "0").replace(/[^0-9.]/g, ''));
+                    const priceB = parseFloat((b['Unit Price'] || "0").replace(/[^0-9.]/g, ''));
+                    return priceA - priceB;
                 });
-                html += `</details>`;
             }
-            resultsDiv.innerHTML += html + `</div>`;
+            let others = items.slice(1).sort((a, b) => (b['Date (yyyy-mm-dd)'] || "").localeCompare(a['Date (yyyy-mm-dd)'] || ""));
+            finalDisplayList.push({ store, cheapest: items[0], others });
         });
-    }
+    });
+
+    // Final sort of cards
+    finalDisplayList.sort((a, b) => {
+        if (currentSortMode === 'recent') {
+            return (b.cheapest['Date (yyyy-mm-dd)'] || "").localeCompare(a.cheapest['Date (yyyy-mm-dd)'] || "");
+        } else {
+            const priceA = parseFloat((a.cheapest['Unit Price'] || "0").replace(/[^0-9.]/g, ''));
+            const priceB = parseFloat((b.cheapest['Unit Price'] || "0").replace(/[^0-9.]/g, ''));
+            return priceA - priceB;
+        }
+    });
+
+    // ... rest of the rendering HTML (the .forEach loop) ...
+    finalDisplayList.forEach(group => {
+        const main = group.cheapest;
+        const priceClass = currentSortMode === 'recent' ? 'unit-price price-recent' : 'unit-price price-lowest';
+        
+        let html = `
+            <div class="item-card">
+                <div class="card-header">
+                    <div class="store-name">${group.store}</div>
+                    <span class="${priceClass}">${formatPriceDisplay(main['Unit Price'], main['Price'])}</span>
+                </div>
+                <div class="details-text">${main.Item}</div>
+                <div class="meta-info">
+                    <span class="bold-label">Total:</span> $${parseFloat(main.Price || 0).toFixed(2)} (${main['Size/Weight'] || 'N/A'})<br>
+                    <span class="bold-label">Date:</span> ${main['Date (yyyy-mm-dd)'] || 'N/A'}
+                </div>`;
+
+        if (group.others.length > 0) {
+            html += `<details><summary>Other Prices (${group.others.length})</summary>`;
+            group.others.forEach(other => {
+                html += `<div class="other-price-row">
+                    <span>${formatPriceDisplay(other['Unit Price'], other['Price'])}</span>
+                    <span style="color: #666;">${other['Date (yyyy-mm-dd)']}</span>
+                </div>`;
+            });
+            html += `</details>`;
+        }
+        resultsDiv.innerHTML += html + `</div>`;
+    });
+}
 </script>
 </body>
 </html>
