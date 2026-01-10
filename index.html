@@ -72,14 +72,24 @@
     let uniqueItems = [];
     let currentSortMode = 'lowest';
 
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQhABSooizVeGukbVaiE3dmAf3PPJZbMGW6CUrpEDtuuyW1-EGfBbYep_jsbUX-dkWwdzC06u1ID_-0/pub?gid=988652283&single=true&output=csv";
+
     window.onload = function() {
-        Papa.parse("receipt_data.csv", {
+        // Show a loading state in the results div
+        document.getElementById('results').innerHTML = "<p style='padding:20px; color:var(--primary); font-weight:bold;'>Loading live data from Google Sheets...</p>";
+
+        Papa.parse(sheetUrl, {
             download: true,
             header: true,
             skipEmptyLines: true,
             complete: function(results) {
                 csvData = results.data;
                 populateInitialUI();
+                document.getElementById('results').innerHTML = ""; // Clear loading message
+            },
+            error: function(err) {
+                document.getElementById('results').innerHTML = 
+                    `<p style='color:red; padding:20px;'>Error loading Sheet: ${err}. <br>Make sure the Sheet is "Published to Web" as CSV.</p>`;
             }
         });
     };
